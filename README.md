@@ -7,7 +7,7 @@ Before rotation, a preview of the detected bright point is displayed:
 
 <a href="url"><img src="https://i.imgur.com/yRJGJD0.jpg" height="200"  align="center" ></a>
 
-## Usage
+# Usage
 - Add a HDRI environment texture (equirectangular projection) to the World in Blender
 - Select any object in the scene
 - From the Object menu, select "HDRI Sun Aligner"
@@ -15,15 +15,15 @@ Before rotation, a preview of the detected bright point is displayed:
 - Press any key to close the preview window
 - The object is rotated in alignment with the vector from the bright lightsource in the HDRI
 
-## Installation
-### Installation of OpenCV
+# Installation
+## Installation of OpenCV
 HDRI Sun Aligner uses the "OpenCV" library for image processing, which needs to be installed as follows:
-#### 1. Install PIP
+### 1. Install PIP
 ```
 cd <path to blender>\2.80\python\bin
 python.exe -m ensurepip
 ```
-#### 2. Rename existing "numpy" folder
+### 2. Rename existing "numpy" folder
 The "numpy" module is required by OpenCV and is already included in the Blender Python distribution. For some unknown reason, pip will not find this module, which will cause a a conflict during installation of OpenCV.
 
 Solve this by renaming the exiting "numpy" folder to "_numpy" (it will be reinstalled in the next step):
@@ -34,14 +34,14 @@ Solve this by renaming the exiting "numpy" folder to "_numpy" (it will be reinst
 
 `<path to blender>\2.80\python\lib\site-packages\_numpy`
 
-#### 3. Install OpenCV
+### 3. Install OpenCV
 ```
 cd <path to blender>\2.80\python\Scripts
 pip3.exe install opencv-python
 ```
 This installes both "numpy" and "opencv-python" in `2.80\python\lib\site-packages\`
 
-### Installaton of HDRI Sun Aligner addon
+## Installation of HDRI Sun Aligner addon
 1. Download this repository as a ZIP file
 2. Open Blender preferences -> addons and select "Install from file"...
 3. Activate the addon
