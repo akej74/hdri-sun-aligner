@@ -16,7 +16,7 @@ Before rotation, a preview of the detected bright point is displayed:
 - The object is rotated in alignment with the vector from the bright light in the HDRI
 
 # Installation of OpenCV library
-HDRI Sun Aligner uses the "OpenCV" library for image processing, which needs to be installed as follows:
+HDRI Sun Aligner uses the "OpenCV" library for image processing, which needs to be installed as follows (close Blender before running these commands):
 
 ```
 cd <path to blender>\2.80\python\bin
