@@ -100,17 +100,14 @@ class OBJECT_OT_hdri_sun_aligner(bpy.types.Operator):
         # X and Y position of the brightest point
         max_x, max_y = max_loc
 
-        # Equirectangular projection ranges (longitude and latitude in degrees)
-        min_long = -180
-        max_long = 180
-        min_lat = -90
-        max_lat = 90
-
-        # Calculate scale
-        x_scale = (max_long - min_long) / new_width # longitude
-        y_scale = (max_lat - min_lat) / new_height  # latitude
-
-        # Find the point in longitude and latitude (degrees)
+        # Find the point in longitude and latitude (degrees) from x-y coordinate in image
+        # Longitude range: [-180 to +180]
+        # Latitude range: [+90 to -90]
+        #####################################
+        # -180, +90              +180, +90  #                 
+        #                                   #
+        # -180, -90              +180, -90  #
+        #####################################
         longitude_deg = ((max_x * 360) / new_width) - 180
         latitude_deg = ((max_y * -180) / new_height) + 90
 
