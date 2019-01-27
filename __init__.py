@@ -148,7 +148,10 @@ class OBJECT_OT_calculate_sun_position(bpy.types.Operator):
 
     
     def modal(self, context, event):
-        """ Get image coordinates from mouse click. *** Currently not in use *** """
+        """ Get image coordinates from mouse click.
+        
+        *** Currently not in use ***
+        """
 
         if event.type == 'LEFTMOUSE' and event.value == 'PRESS':
             
