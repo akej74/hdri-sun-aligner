@@ -9,23 +9,20 @@ Before rotation, a preview of the detected bright point is displayed:
 
 # Usage
 - Add a HDRI environment texture (equirectangular projection) to the World in Blender
-- Select any object in the scene
-- From the Object menu, select "HDRI Sun Aligner"
-- A preview of the brightest point in the HDRI is displayed (normally the sun or brightest light), for verification
-- Press any key to close the preview window
-- The object is rotated in alignment with the vector from the bright light in the HDRI
+- Open both the 3D Viewport and an Image Editor
+- HDRI Sun Aligner is accessed from the panel to the right:
 
-# Installation of OpenCV library
-HDRI Sun Aligner uses the "OpenCV" library for image processing, which needs to be installed as follows (close Blender before running these commands):
+<a href="https://imgur.com/FX1OIGt"><img src="https://i.imgur.com/FX1OIGt.jpg" height="200" title="source: imgur.com" /></a>
 
-```
-cd <path to blender>\2.80\python\bin
-python.exe -m ensurepip
-python.exe -m pip install --upgrade pip setuptools wheel
-python.exe -m pip install opencv-python --user
-```
+- Calculate the brightest point in the HDRI used for the environment by clicking on "Calculate sun position"
+- A preview of the calculated position is displayed in the image editor:
+
+<a href="https://imgur.com/nymkd3D"><img src="https://i.imgur.com/nymkd3D.jpg" height="200" title="source: imgur.com" /></a>
+
+- Updated "Longitude and Latitude" values are displayed in the panel
+- Select any object and click "Rotate object" to align it with a vector from the calculated point to origo
 
 # Installation of HDRI Sun Aligner addon
-1. Download this repository as a ZIP file
+1. Download this repository (master) as a ZIP file
 2. Open Blender preferences -> addons and select "Install from file"...
-3. Activate the addon
+3. Activate the addon, "HDRI Sun Aligner"
