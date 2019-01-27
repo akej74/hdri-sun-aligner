@@ -335,6 +335,13 @@ class PANEL_PT_hdri_sun_aligner(bpy.types.Panel):
         row.operator('object.rotate', text='Rotate object')
 
 
+class HDRISunAlignerPropertyGroup(bpy.types.PropertyGroup):
+    """ All properties used by HDRI Sun Aligner."""
+
+    long_deg: bpy.props.FloatProperty(name="Longitude", default=0.0, min=-180.0, max=180.0)
+    lat_deg: bpy.props.FloatProperty(name="Latitude", default=0.0, min=-90.0, max=90.0)
+    
+
 classes = (OBJECT_OT_hdri_sun_aligner,)
 
 def register():
