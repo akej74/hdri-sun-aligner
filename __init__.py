@@ -340,7 +340,32 @@ class HDRISunAlignerPropertyGroup(bpy.types.PropertyGroup):
 
     long_deg: bpy.props.FloatProperty(name="Longitude", default=0.0, min=-180.0, max=180.0)
     lat_deg: bpy.props.FloatProperty(name="Latitude", default=0.0, min=-90.0, max=90.0)
-    
+
+
+class OBJECT_OT_message_box(bpy.types.Operator):
+    """ Show a message box."""
+
+    bl_idname = "message.messagebox"
+    bl_label = ""
+ 
+    message: bpy.props.StringProperty(
+        name = "message",
+        description = "message",
+        default = ''
+    )
+ 
+    def execute(self, context):
+        self.report({'INFO'}, self.message)
+        print(self.message)
+        return {'FINISHED'}
+ 
+    def invoke(self, context, event):
+        return context.window_manager.invoke_props_dialog(self, width = 300)
+ 
+    def draw(self, context):
+        self.layout.label(text=self.message)
+        self.layout.label(text="")
+
 
 classes = (OBJECT_OT_hdri_sun_aligner,)
 
