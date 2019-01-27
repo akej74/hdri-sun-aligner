@@ -367,7 +367,13 @@ class OBJECT_OT_message_box(bpy.types.Operator):
         self.layout.label(text="")
 
 
-classes = (OBJECT_OT_hdri_sun_aligner,)
+classes = (OBJECT_OT_calculate_sun_position,
+           PANEL_PT_hdri_sun_aligner,
+           OBJECT_OT_dummy,
+           HDRISunAlignerPropertyGroup,
+           OBJECT_OT_rotate,
+           OBJECT_OT_message_box)
+
 
 def register():
     from bpy.utils import register_class
