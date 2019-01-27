@@ -18,6 +18,46 @@ import numpy as np
 from math import pi, cos, sin
 import mathutils
 
+class OBJECT_OT_rotate(bpy.types.Operator):
+    """Rotate active object in alignment with sun position"""     
+
+    bl_idname = "object.rotate"     
+    bl_label = "Rotate active object in alignment with sun position."         
+    bl_options = {'REGISTER'}
+
+    # Only enable operator if an object is selected
+    @classmethod
+    def poll(cls, context):        
+        if bpy.context.selected_objects:
+            return True
+        else:
+            return False
+
+    def execute(self, context):
+        scene = context.scene
+        object = context.object
+  
+        longitude = scene.hdri_sa_property_grp.long_deg * (pi/180) # Convert to radians
+        latitude = scene.hdri_sa_property_grp.lat_deg * (pi/180)
+
+        # Calculate a vector pointing from the longitude and latitude to origo
+        # See https://vvvv.org/blog/polar-spherical-and-geographic-coordinates 
+        x = cos(latitude) * cos(longitude)
+        y = cos(latitude) * sin(longitude)
+        z = sin(latitude)
+
+        # Define euler rotation according to the vector
+        vector = mathutils.Vector([x, -y, z]) # "-y" to match Blender coordinate system
+        up_axis = mathutils.Vector([0.0, 0.0, 1.0])
+        angle = vector.angle(up_axis, 0)
+        axis = up_axis.cross(vector)
+        euler = mathutils.Matrix.Rotation(angle, 4, axis).to_euler()
+
+        # Rotate selected object
+        object.rotation_euler = euler
+        
+        return {'FINISHED'}   
+
 class OBJECT_OT_hdri_sun_aligner(bpy.types.Operator):
     """HDRI Sun Aligner"""      
 
