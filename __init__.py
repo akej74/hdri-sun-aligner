@@ -104,7 +104,7 @@ class OBJECT_OT_calculate_sun_position(bpy.types.Operator):
                     print("Removing:", name)
                     bpy.data.images.remove(img)
 
-        # Check if an enrvironmental image is defined        
+        # Check if an environmental image is defined        
         for node in world_nodes:
             # Find the Environment Texture node
             if isinstance(node, bpy.types.ShaderNodeTexEnvironment): 
