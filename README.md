@@ -19,6 +19,6 @@ HDRI Sun Aligner is a Blender 2.8 addon for automatically rotating an object (e.
 - Select any object and click "Rotate object" to align it with a vector from the calculated point to origo
 
 # Installation of HDRI Sun Aligner addon
-1. Download this repository (master) as a ZIP file
+1. Download latest release from https://github.com/akej74/hdri-sun-aligner/releases (source as ZIP). 
 2. Open Blender preferences -> addons and select "Install from file"...
 3. Activate the addon, "HDRI Sun Aligner"
