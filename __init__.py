@@ -224,7 +224,7 @@ class OBJECT_OT_calculate_sun_position(bpy.types.Operator):
         # Assume only one maximum, use the first found
         max_loc_new = list_of_coordinates[0]
         
-        # Get x and y coordianates for the brightest pixel 
+        # Get x and y coordinates for the brightest pixel 
         max_x = max_loc_new[1]
         max_y = max_loc_new[0]
         
