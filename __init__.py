@@ -58,6 +58,30 @@ class OBJECT_OT_rotate(bpy.types.Operator):
         
         return {'FINISHED'}   
 
+
+class OBJECT_OT_dummy(bpy.types.Operator):
+    """Calculate the brightest spot in the HDRI used for the environment"""
+    
+    #Dummy operator used for main operation with overide   
+
+    bl_idname = "object.dummy"     
+    bl_label = "Dummy"         
+    bl_options = {'REGISTER'}
+
+    def execute(self, context):
+        screen = context.screen
+        override = bpy.context.copy()
+
+        for area in screen.areas:
+            if area.type == 'IMAGE_EDITOR':
+                for region in area.regions:
+                    if region.type == 'WINDOW':
+                        override = {'region': region, 'area': area}
+        
+        bpy.ops.object.calculate_sun_position(override, 'INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+
 class OBJECT_OT_hdri_sun_aligner(bpy.types.Operator):
     """HDRI Sun Aligner"""      
 
