@@ -380,16 +380,16 @@ def register():
     for cls in classes:
         register_class(cls)
 
-    # Add operator to Object menu in 3D Viewport
-    bpy.types.VIEW3D_MT_object.append(menu_draw)
+    # Add property group
+    bpy.types.Scene.hdri_sa_property_grp = bpy.props.PointerProperty(type=HDRISunAlignerPropertyGroup)
 
 def unregister():
     from bpy.utils import unregister_class
     for cls in reversed(classes):
         unregister_class(cls)
 
-    # Remove operator from Object menu in 3D Viewport
-    bpy.types.VIEW3D_MT_object.remove(menu_draw)
+    # Delete property group
+    del bpy.types.Scene.hdri_sa_property_grp
 
 if __name__ == "__main__":
     register()
