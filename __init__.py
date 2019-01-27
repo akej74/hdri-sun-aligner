@@ -310,9 +310,30 @@ class OBJECT_OT_calculate_sun_position(bpy.types.Operator):
         return (imagep)
 
 
-def menu_draw(self, context):
-    self.layout.separator()
-    self.layout.operator("object.hdri_sun_aligner")
+class PANEL_PT_hdri_sun_aligner(bpy.types.Panel):
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_label = "HDRI Sun Aligner"
+    bl_context = "objectmode"
+    bl_category = "HDRI Sun Aligner"
+
+    def draw(self, context):
+        layout = self.layout
+        scene = context.scene
+        
+        row = layout.row()
+        row.operator('object.dummy', text='Calculate sun position')
+        layout.separator()
+        row = layout.row()
+        row.label(text="Current sun position:")
+        row = layout.row()
+        row.prop(scene.hdri_sa_property_grp, 'long_deg', text="Longitude")
+        row = layout.row()
+        row.prop(scene.hdri_sa_property_grp, 'lat_deg', text="Latitude")
+        layout.separator()
+        row = layout.row()
+        row.operator('object.rotate', text='Rotate object')
+
 
 classes = (OBJECT_OT_hdri_sun_aligner,)
 
