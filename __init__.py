@@ -9,10 +9,12 @@ bl_info = {
     "category" : "Object"
 }
 
+# Blender imports
 import bpy
 import bpy.types
+
+# Other imports
 import numpy as np
-import cv2
 from math import pi, cos, sin
 import mathutils
 
