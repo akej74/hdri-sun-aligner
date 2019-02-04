@@ -24,4 +24,6 @@ class PANEL_PT_hdri_sun_aligner(bpy.types.Panel):
         row.prop(scene.hdri_sa_property_grp, 'lat_deg', text="Latitude")
         layout.separator()
         row = layout.row()
-        row.operator('object.rotate', text='Rotate object')
+        row.operator('object.rotate', text='Rotate active object')
+        row = layout.row()
+        row.operator('object.add_new_sun', text='Add new sun')

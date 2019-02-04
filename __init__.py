@@ -18,6 +18,7 @@ from . panel import PANEL_PT_hdri_sun_aligner
 
 # Import Operators
 from . operators import OBJECT_OT_rotate
+from . operators import OBJECT_OT_add_new_sun
 from . operators import OBJECT_OT_dummy
 from . operators import OBJECT_OT_calculate_sun_position
 from . operators import OBJECT_OT_message_box
@@ -35,7 +36,8 @@ classes = (OBJECT_OT_calculate_sun_position,
            OBJECT_OT_dummy,
            HDRISunAlignerPropertyGroup,
            OBJECT_OT_rotate,
-           OBJECT_OT_message_box)
+           OBJECT_OT_message_box,
+           OBJECT_OT_add_new_sun)
 
 
 def register():

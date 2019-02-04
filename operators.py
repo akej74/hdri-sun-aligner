@@ -48,6 +48,40 @@ class OBJECT_OT_rotate(bpy.types.Operator):
         return {'FINISHED'}   
 
 
+class OBJECT_OT_add_new_sun(bpy.types.Operator):
+    """Add a new sun, rotated in alignment with sun position"""     
+
+    bl_idname = "object.add_new_sun"     
+    bl_label = "Add a new sun, rotated in alignment with sun position."         
+    bl_options = {'REGISTER'}
+
+    def execute(self, context):
+        # Create new collection if it doesn't exist        
+        new_collection = self.make_collection("HDRI Sun Aligner")
+        
+        # Create new sun object in the collection
+        sun_data = bpy.data.lights.new(name="HDRI Sun", type='SUN')
+        sun_object = bpy.data.objects.new(name="HDRI Sun", object_data=sun_data)
+        new_collection.objects.link(sun_object)
+        
+        # Select sun object and rotate
+        sun_object.select_set(state=True)
+        context.view_layer.objects.active = sun_object
+        bpy.ops.object.rotate()
+
+        return {'FINISHED'}
+
+    def make_collection(self, collection_name):
+        # Check if collection already exists
+        if collection_name in bpy.data.collections:
+            return bpy.data.collections[collection_name]
+        # If not, create new collection
+        else:
+            new_collection = bpy.data.collections.new(collection_name)
+            bpy.context.scene.collection.children.link(new_collection)
+            return new_collection
+
+
 class OBJECT_OT_dummy(bpy.types.Operator):
     """Calculate the brightest spot in the HDRI used for the environment"""
     
