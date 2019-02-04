@@ -1,5 +1,4 @@
 # Blender imports
-import bpy
 import bpy.types
 
 # Other imports
