@@ -49,10 +49,10 @@ class OBJECT_OT_rotate(bpy.types.Operator):
 
 
 class OBJECT_OT_add_new_sun(bpy.types.Operator):
-    """Add a new sun, rotated in alignment with sun position"""     
+    """Add a new sun, rotated in alignment with current sun position"""     
 
     bl_idname = "object.add_new_sun"     
-    bl_label = "Add a new sun, rotated in alignment with sun position."         
+    bl_label = "Add a new sun, rotated in alignment with current sun position."         
     bl_options = {'REGISTER'}
 
     def execute(self, context):
@@ -173,7 +173,7 @@ class OBJECT_OT_calculate_sun_position(bpy.types.Operator):
                 self.report({'WARNING'}, msg)
                 return {'CANCELLED'}
 
-            # Open hdrI_preview image in the Image Editor
+            # Open hdri_preview image in the Image Editor
             for area in screen.areas:
                 if area.type == 'IMAGE_EDITOR':
                     area.spaces.active.image = hdri_preview 
