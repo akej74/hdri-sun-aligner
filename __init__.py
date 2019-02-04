@@ -2,7 +2,7 @@ bl_info = {
     "name" : "HDRI Sun Aligner",
     "author" : "Ake Johansson",
     "description" : "Rotates an object to match the brightest point in the HDRI texture used for the environment.",
-    "version": (1, 1),
+    "version": (1, 2),
     "blender" : (2, 80, 0),
     "location" : "View3D > Object > HDRI Sun Aligner",
     "warning" : "",
@@ -13,14 +13,15 @@ bl_info = {
 import bpy
 import bpy.types
 
-# Panel
+# Import Panel
 from . panel import PANEL_PT_hdri_sun_aligner
 
-# Operators
+# Import Operators
 from . operators import OBJECT_OT_rotate
 from . operators import OBJECT_OT_dummy
 from . operators import OBJECT_OT_calculate_sun_position
 from . operators import OBJECT_OT_message_box
+
 
 class HDRISunAlignerPropertyGroup(bpy.types.PropertyGroup):
     """ All properties used by HDRI Sun Aligner."""
