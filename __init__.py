@@ -32,12 +32,12 @@ class HDRISunAlignerPropertyGroup(bpy.types.PropertyGroup):
 
 
 classes = (OBJECT_OT_calculate_sun_position,
-           PANEL_PT_hdri_sun_aligner,
            OBJECT_OT_dummy,
-           HDRISunAlignerPropertyGroup,
            OBJECT_OT_rotate,
            OBJECT_OT_message_box,
-           OBJECT_OT_add_new_sun)
+           OBJECT_OT_add_new_sun,
+           PANEL_PT_hdri_sun_aligner,
+           HDRISunAlignerPropertyGroup)
 
 
 def register():
