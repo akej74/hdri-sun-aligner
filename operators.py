@@ -358,3 +358,4 @@ class OBJECT_OT_calculate_sun_position(bpy.types.Operator):
         imagep = np.abs(imagep)
 
         return imagep
+        
