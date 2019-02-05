@@ -149,7 +149,6 @@ class OBJECT_OT_calculate_sun_position(bpy.types.Operator):
         for img in bpy.data.images:
                 name = img.name
                 if name.startswith("hdri_sa_preview"):
-                    print("Removing:", name)
                     bpy.data.images.remove(img)
 
         # Check if an environmental image is defined        
@@ -168,7 +167,7 @@ class OBJECT_OT_calculate_sun_position(bpy.types.Operator):
             open_editor_types = [area.type for area in screen.areas]
             
             if "IMAGE_EDITOR" not in open_editor_types:
-                msg = 'Please open an Image Editor window.'
+                msg = "Please open an Image Editor window."
                 bpy.ops.message.messagebox('INVOKE_DEFAULT', message=msg)
                 self.report({'WARNING'}, msg)
                 return {'CANCELLED'}
@@ -178,7 +177,7 @@ class OBJECT_OT_calculate_sun_position(bpy.types.Operator):
                 if area.type == 'IMAGE_EDITOR':
                     area.spaces.active.image = hdri_preview 
         else:
-            msg = 'Please add an Environment Texture for the world.'
+            msg = "Please add an Environment Texture for the world."
             bpy.ops.message.messagebox('INVOKE_DEFAULT', message=msg)
             self.report({'WARNING'}, msg)
             return {'CANCELLED'}
@@ -216,7 +215,7 @@ class OBJECT_OT_calculate_sun_position(bpy.types.Operator):
             img_coordinate_x = int(uv_x * img_size_x) 
             img_coordinate_y = int(uv_y * img_size_y)
 
-            # Limit coordiantes from zero to max size of image            
+            # Limit coordinates from zero to max size of image            
             if img_coordinate_x > img_size_x:
                 img_coordinate_x = img_size_x 
             
@@ -358,4 +357,4 @@ class OBJECT_OT_calculate_sun_position(bpy.types.Operator):
         imagep = np.fft.ifft2(ftimagep)
         imagep = np.abs(imagep)
 
-        return (imagep)
+        return imagep

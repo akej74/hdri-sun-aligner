@@ -14,16 +14,17 @@ class PANEL_PT_hdri_sun_aligner(bpy.types.Panel):
         scene = context.scene
         
         row = layout.row()
-        row.operator('object.dummy', text='Calculate sun position')
+        row.operator("object.dummy", text="Calculate sun position")
         layout.separator()
         row = layout.row()
         row.label(text="Current sun position:")
         row = layout.row()
-        row.prop(scene.hdri_sa_property_grp, 'long_deg', text="Longitude")
+        row.prop(scene.hdri_sa_property_grp, "long_deg", text="Longitude")
         row = layout.row()
-        row.prop(scene.hdri_sa_property_grp, 'lat_deg', text="Latitude")
+        row.prop(scene.hdri_sa_property_grp, "lat_deg", text="Latitude")
         layout.separator()
         row = layout.row()
-        row.operator('object.rotate', text='Rotate active object')
+        row.operator("object.rotate", text="Rotate active object")
         row = layout.row()
-        row.operator('object.add_new_sun', text='Add new sun')
+        row.operator("object.add_new_sun", text="Add new sun")
+        
