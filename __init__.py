@@ -1,12 +1,12 @@
 bl_info = {
-    "name" : "HDRI Sun Aligner",
-    "author" : "Ake Johansson",
-    "description" : "Rotates an object to match the brightest point in the HDRI texture used for the environment.",
+    "name": "HDRI Sun Aligner",
+    "author": "Ake Johansson",
+    "description": "Rotates an object to match the brightest point in the HDRI texture used for the environment.",
     "version": (1, 2),
-    "blender" : (2, 80, 0),
-    "location" : "View3D > Object > HDRI Sun Aligner",
-    "warning" : "",
-    "category" : "Object"
+    "blender": (2, 80, 0),
+    "location": "View3D > Object > HDRI Sun Aligner",
+    "warning": "",
+    "category": "Object"
 }
 
 # Blender imports
