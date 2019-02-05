@@ -14,14 +14,14 @@ import bpy
 import bpy.types
 
 # Import Panel
-from . panel import PANEL_PT_hdri_sun_aligner
+from .panel import PANEL_PT_hdri_sun_aligner
 
 # Import Operators
-from . operators import OBJECT_OT_rotate
-from . operators import OBJECT_OT_add_new_sun
-from . operators import OBJECT_OT_dummy
-from . operators import OBJECT_OT_calculate_sun_position
-from . operators import OBJECT_OT_message_box
+from .operators import OBJECT_OT_rotate
+from .operators import OBJECT_OT_add_new_sun
+from .operators import OBJECT_OT_dummy
+from .operators import OBJECT_OT_calculate_sun_position
+from .operators import OBJECT_OT_message_box
 
 
 class HDRISunAlignerPropertyGroup(bpy.types.PropertyGroup):
