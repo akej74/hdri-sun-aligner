@@ -106,7 +106,7 @@ class OBJECT_OT_dummy(bpy.types.Operator):
 
 
 class OBJECT_OT_message_box(bpy.types.Operator):
-    """ Show a message box."""
+    """Show a message box."""
 
     bl_idname = "message.messagebox"
     bl_label = ""
@@ -358,4 +358,3 @@ class OBJECT_OT_calculate_sun_position(bpy.types.Operator):
         imagep = np.abs(imagep)
 
         return imagep
-        
