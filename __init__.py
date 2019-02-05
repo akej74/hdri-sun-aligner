@@ -25,7 +25,7 @@ from .operators import OBJECT_OT_message_box
 
 
 class HDRISunAlignerPropertyGroup(bpy.types.PropertyGroup):
-    """ All properties used by HDRI Sun Aligner."""
+    """All properties used by HDRI Sun Aligner."""
 
     long_deg: bpy.props.FloatProperty(name="Longitude", default=0.0, min=-180.0, max=180.0)
     lat_deg: bpy.props.FloatProperty(name="Latitude", default=0.0, min=-90.0, max=90.0)
