@@ -112,9 +112,9 @@ class OBJECT_OT_message_box(bpy.types.Operator):
     bl_label = ""
  
     message: bpy.props.StringProperty(
-        name = "message",
-        description = "message",
-        default = ''
+        name="message",
+        description="message",
+        default=''
     )
  
     def execute(self, context):
@@ -123,7 +123,7 @@ class OBJECT_OT_message_box(bpy.types.Operator):
         return {'FINISHED'}
  
     def invoke(self, context, event):
-        return context.window_manager.invoke_props_dialog(self, width = 300)
+        return context.window_manager.invoke_props_dialog(self, width=300)
  
     def draw(self, context):
         self.layout.label(text=self.message)
@@ -138,11 +138,9 @@ class OBJECT_OT_calculate_sun_position(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def invoke(self, context, event):
-                
         scene = context.scene
         screen = context.screen
         world_nodes = scene.world.node_tree.nodes # All nodes for the World
-        
         image = None
         
         # Cleanup to prevent duplicate images
@@ -160,8 +158,6 @@ class OBJECT_OT_calculate_sun_position(bpy.types.Operator):
         if image:
             hdri_preview = image.copy()
             hdri_preview.name = "hdri_sa_preview." + image.file_format
-
-            width, height = hdri_preview.size
 
             # Check if an Image Editor is open
             open_editor_types = [area.type for area in screen.areas]
@@ -288,16 +284,6 @@ class OBJECT_OT_calculate_sun_position(bpy.types.Operator):
         hdri_img[:, :, 0][point_mask] = 1
         hdri_img[:, :, 1][point_mask] = 0
         hdri_img[:, :, 2][point_mask] = 0
-
-        # Equirectangular projection ranges (longitude and latitude in degrees)
-        min_long = -180
-        max_long = 180
-        min_lat = -90
-        max_lat = 90
-
-        # Calculate scale
-        x_scale = (max_long - min_long) / width # longitude
-        y_scale = (max_lat - min_lat) / height  # latitude
 
         # Find the point in longitude and latitude (degrees)
         long_deg = ((max_x * 360) / width) - 180
