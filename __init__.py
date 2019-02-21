@@ -30,6 +30,7 @@ class HDRISunAlignerPropertyGroup(bpy.types.PropertyGroup):
 
     long_deg: bpy.props.FloatProperty(name="Longitude", default=0.0, min=-180.0, max=180.0)
     lat_deg: bpy.props.FloatProperty(name="Latitude", default=0.0, min=-90.0, max=90.0)
+    z_org: bpy.props.FloatProperty(name="Z rot org", default=0.0)
 
 
 classes = (OBJECT_OT_calculate_sun_position,

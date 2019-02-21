@@ -42,6 +42,9 @@ class OBJECT_OT_rotate(bpy.types.Operator):
         axis = up_axis.cross(vector)
         euler = mathutils.Matrix.Rotation(angle, 4, axis).to_euler()
 
+        # Store z-rotation value as property, used for driver calculation 
+        scene.hdri_sa_property_grp.z_org = euler.z
+        
         # Rotate selected object
         object.rotation_euler = euler
         
@@ -105,6 +108,42 @@ class OBJECT_OT_add_rotation_driver(bpy.types.Operator):
         scene = context.scene
         object = context.object
         
+        mapping_node = None
+        world_nodes = scene.world.node_tree.nodes # All nodes for the World
+        
+        for node in world_nodes:
+            # Find the Vector Mapping node
+            if isinstance(node, bpy.types.ShaderNodeMapping):
+                mapping_node = node.name
+                break
+        
+        if mapping_node:
+            # Driver for z rotation
+            z_rotation_driver = object.driver_add('rotation_euler',2)
+
+            hdri_z = z_rotation_driver.driver.variables.new() # HDRI mapping node
+            obj_z = z_rotation_driver.driver.variables.new() # Object original rotation 
+            
+            hdri_z.name = "hdri_z"
+            hdri_z.targets[0].id_type = 'WORLD'
+            hdri_z.targets[0].id = scene.world
+            hdri_z.targets[0].data_path = 'node_tree.nodes["Mapping"].rotation[2]' # TODO: Fix hardcoded node name...
+
+            obj_z.name = "obj_z"
+            obj_z.targets[0].id_type = 'SCENE'
+            obj_z.targets[0].id = scene
+            obj_z.targets[0].data_path = 'hdri_sa_property_grp.z_org'
+
+            #z_rotation_driver.driver.expression = hdri_z.name + '-' + obj_z.name
+            z_rotation_driver.driver.expression = obj_z.name + '-' + hdri_z.name
+
+        else:
+            msg = "No Mapping node defined for HDRI rotation."
+            bpy.ops.message.messagebox('INVOKE_DEFAULT', message=msg)
+            self.report({'WARNING'}, msg)
+            return {'CANCELLED'}
+
+
         return {'FINISHED'}
 
 
