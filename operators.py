@@ -86,6 +86,28 @@ class OBJECT_OT_add_new_sun(bpy.types.Operator):
             return new_collection
 
 
+class OBJECT_OT_add_rotation_driver(bpy.types.Operator):
+    """Add a a driver to the active object z-rotation, based on HDRI mapping node"""     
+
+    bl_idname = "object.add_rotation_driver"     
+    bl_label = "Add a a driver to the active object z-rotation, based on HDRI rotation using mapping node."         
+    bl_options = {'REGISTER'}
+
+    # Only enable operator if an object is selected
+    @classmethod
+    def poll(cls, context):        
+        if bpy.context.selected_objects:
+            return True
+        else:
+            return False
+
+    def execute(self, context):
+        scene = context.scene
+        object = context.object
+        
+        return {'FINISHED'}
+
+
 class OBJECT_OT_dummy(bpy.types.Operator):
     """Calculate the brightest spot in the HDRI used for the environment"""
     

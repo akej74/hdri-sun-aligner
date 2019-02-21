@@ -27,4 +27,6 @@ class PANEL_PT_hdri_sun_aligner(bpy.types.Panel):
         row.operator("object.rotate", text="Rotate active object")
         row = layout.row()
         row.operator("object.add_new_sun", text="Add new sun")
-        
+        layout.separator()
+        row = layout.row()
+        row.operator("object.add_rotation_driver", text="Add rotation driver")
