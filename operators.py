@@ -56,6 +56,10 @@ class OBJECT_OT_add_new_sun(bpy.types.Operator):
     bl_options = {'REGISTER'}
 
     def execute(self, context):
+        # Deselect objects
+        for obj in context.selected_objects:
+            obj.select_set(state=False)
+        
         # Create new collection if it doesn't exist        
         new_collection = self.make_collection("HDRI Sun Aligner")
         
