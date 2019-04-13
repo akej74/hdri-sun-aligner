@@ -14,7 +14,7 @@ import bpy
 import bpy.types
 
 # Import Panel
-from .panel import PANEL_PT_hdri_sun_aligner
+from .panel import HDRISA_PT_main_panel
 
 # Import Operators
 from .operators import OBJECT_OT_rotate
@@ -39,7 +39,7 @@ classes = (OBJECT_OT_calculate_sun_position,
            OBJECT_OT_message_box,
            OBJECT_OT_add_new_sun,
            OBJECT_OT_add_rotation_driver,
-           PANEL_PT_hdri_sun_aligner,
+           HDRISA_PT_main_panel,
            HDRISAProperties)
 
 

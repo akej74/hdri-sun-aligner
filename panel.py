@@ -2,7 +2,7 @@
 import bpy.types
 
 
-class PANEL_PT_hdri_sun_aligner(bpy.types.Panel):
+class HDRISA_PT_main_panel(bpy.types.Panel):
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_label = "HDRI Sun Aligner"
