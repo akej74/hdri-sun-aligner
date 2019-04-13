@@ -17,12 +17,12 @@ import bpy.types
 from .panel import HDRISA_PT_main_panel
 
 # Import Operators
-from .operators import OBJECT_OT_rotate
-from .operators import OBJECT_OT_add_new_sun
-from .operators import OBJECT_OT_dummy
-from .operators import OBJECT_OT_calculate_sun_position
-from .operators import OBJECT_OT_message_box
-from .operators import OBJECT_OT_add_rotation_driver
+from .operators import HDRI_OT_rotate
+from .operators import HDRISA_OT_add_new_sun
+from .operators import HDRISA_OT_dummy
+from .operators import HDRISA_OT_calculate_sun_position
+from .operators import HDRISA_OT_message_box
+from .operators import HDRISA_OT_add_rotation_driver
 
 
 class HDRISAProperties(bpy.types.PropertyGroup):
@@ -33,12 +33,12 @@ class HDRISAProperties(bpy.types.PropertyGroup):
     z_org: bpy.props.FloatProperty(name="Z rot org", default=0.0)
 
 
-classes = (OBJECT_OT_calculate_sun_position,
-           OBJECT_OT_dummy,
-           OBJECT_OT_rotate,
-           OBJECT_OT_message_box,
-           OBJECT_OT_add_new_sun,
-           OBJECT_OT_add_rotation_driver,
+classes = (HDRISA_OT_calculate_sun_position,
+           HDRISA_OT_dummy,
+           HDRI_OT_rotate,
+           HDRISA_OT_message_box,
+           HDRISA_OT_add_new_sun,
+           HDRISA_OT_add_rotation_driver,
            HDRISA_PT_main_panel,
            HDRISAProperties)
 

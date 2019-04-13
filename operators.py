@@ -7,10 +7,10 @@ from math import pi, cos, sin
 import mathutils
 
 
-class OBJECT_OT_rotate(bpy.types.Operator):
+class HDRI_OT_rotate(bpy.types.Operator):
     """Rotate active object in alignment with sun position"""     
 
-    bl_idname = "object.rotate"     
+    bl_idname = "hdrisa.rotate"     
     bl_label = "Rotate active object in alignment with sun position."         
     bl_options = {'REGISTER'}
 
@@ -51,10 +51,10 @@ class OBJECT_OT_rotate(bpy.types.Operator):
         return {'FINISHED'}   
 
 
-class OBJECT_OT_add_new_sun(bpy.types.Operator):
+class HDRISA_OT_add_new_sun(bpy.types.Operator):
     """Add a new sun, rotated in alignment with current sun position"""     
 
-    bl_idname = "object.add_new_sun"     
+    bl_idname = "hdrisa.add_new_sun"     
     bl_label = "Add a new sun, rotated in alignment with current sun position."         
     bl_options = {'REGISTER'}
 
@@ -74,7 +74,7 @@ class OBJECT_OT_add_new_sun(bpy.types.Operator):
         # Select sun object and rotate
         sun_object.select_set(state=True)
         context.view_layer.objects.active = sun_object
-        bpy.ops.object.rotate()
+        bpy.ops.hdrisa.rotate()
 
         return {'FINISHED'}
 
@@ -89,10 +89,10 @@ class OBJECT_OT_add_new_sun(bpy.types.Operator):
             return new_collection
 
 
-class OBJECT_OT_add_rotation_driver(bpy.types.Operator):
+class HDRISA_OT_add_rotation_driver(bpy.types.Operator):
     """Add a a driver to the active object z-rotation, based on HDRI mapping node"""     
 
-    bl_idname = "object.add_rotation_driver"     
+    bl_idname = "hdrisa.add_rotation_driver"     
     bl_label = "Add a a driver to the active object z-rotation, based on HDRI rotation using mapping node."         
     bl_options = {'REGISTER'}
 
@@ -147,12 +147,12 @@ class OBJECT_OT_add_rotation_driver(bpy.types.Operator):
         return {'FINISHED'}
 
 
-class OBJECT_OT_dummy(bpy.types.Operator):
+class HDRISA_OT_dummy(bpy.types.Operator):
     """Calculate the brightest spot in the HDRI used for the environment"""
     
     #Dummy operator used for main operation with overide   
 
-    bl_idname = "object.dummy"     
+    bl_idname = "hdrisa.dummy"     
     bl_label = "Dummy"         
     bl_options = {'REGISTER'}
 
@@ -166,11 +166,11 @@ class OBJECT_OT_dummy(bpy.types.Operator):
                     if region.type == 'WINDOW':
                         override = {'region': region, 'area': area}
         
-        bpy.ops.object.calculate_sun_position(override, 'INVOKE_DEFAULT')
+        bpy.ops.hdrisa.calculate_sun_position(override, 'INVOKE_DEFAULT')
         return {'FINISHED'}
 
 
-class OBJECT_OT_message_box(bpy.types.Operator):
+class HDRISA_OT_message_box(bpy.types.Operator):
     """Show a message box."""
 
     bl_idname = "message.messagebox"
@@ -195,10 +195,10 @@ class OBJECT_OT_message_box(bpy.types.Operator):
         self.layout.label(text="")
 
 
-class OBJECT_OT_calculate_sun_position(bpy.types.Operator):
+class HDRISA_OT_calculate_sun_position(bpy.types.Operator):
     """Calculate the brightest spot in the HDRI image used for the environment"""
 
-    bl_idname = "object.calculate_sun_position"     
+    bl_idname = "hdrisa.calculate_sun_position"     
     bl_label = "Calculate sun position."         
     bl_options = {'REGISTER', 'UNDO'}
 

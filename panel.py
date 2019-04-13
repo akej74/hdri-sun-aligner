@@ -14,7 +14,7 @@ class HDRISA_PT_main_panel(bpy.types.Panel):
         scene = context.scene
         
         row = layout.row()
-        row.operator("object.dummy", text="Calculate sun position")
+        row.operator("hdrisa.dummy", text="Calculate sun position")
         layout.separator()
         row = layout.row()
         row.label(text="Current sun position:")
@@ -24,9 +24,9 @@ class HDRISA_PT_main_panel(bpy.types.Panel):
         row.prop(scene.hdri_sa_props, "lat_deg", text="Latitude")
         layout.separator()
         row = layout.row()
-        row.operator("object.rotate", text="Rotate active object")
+        row.operator("hdrisa.rotate", text="Rotate active object")
         row = layout.row()
-        row.operator("object.add_new_sun", text="Add new sun")
+        row.operator("hdrisa.add_new_sun", text="Add new sun")
         layout.separator()
         row = layout.row()
-        row.operator("object.add_rotation_driver", text="Add rotation driver")
+        row.operator("hdrisa.add_rotation_driver", text="Add rotation driver")
