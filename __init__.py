@@ -17,7 +17,7 @@ import bpy.types
 from .panel import HDRISA_PT_main_panel
 
 # Import Operators
-from .operators import HDRI_OT_rotate
+from .operators import HDRISA_OT_rotate
 from .operators import HDRISA_OT_add_new_sun
 from .operators import HDRISA_OT_dummy
 from .operators import HDRISA_OT_calculate_sun_position
@@ -35,7 +35,7 @@ class HDRISAProperties(bpy.types.PropertyGroup):
 
 classes = (HDRISA_OT_calculate_sun_position,
            HDRISA_OT_dummy,
-           HDRI_OT_rotate,
+           HDRISA_OT_rotate,
            HDRISA_OT_message_box,
            HDRISA_OT_add_new_sun,
            HDRISA_OT_add_rotation_driver,

@@ -7,7 +7,7 @@ from math import pi, cos, sin
 import mathutils
 
 
-class HDRI_OT_rotate(bpy.types.Operator):
+class HDRISA_OT_rotate(bpy.types.Operator):
     """Rotate active object in alignment with sun position"""     
 
     bl_idname = "hdrisa.rotate"     
