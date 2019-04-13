@@ -223,9 +223,21 @@ class HDRISA_OT_calculate_sun_position(bpy.types.Operator):
                 image = node.image
             
         if image:
+            # Make a copy of the original HDRI
             hdri_preview = image.copy()
+            
             hdri_preview.name = "hdri_sa_preview." + image.file_format
-
+            
+            # Get image dimensions
+            org_width = hdri_preview.size[0]
+            org_height = hdri_preview.size[1]
+            
+            # Scale image if it's larger than 1k for improving performance
+            if org_width > 1024:
+                new_width = 1024
+                new_height = int(org_height * (new_width / org_width))
+                hdri_preview.scale(new_width, new_height)
+           
             # Check if an Image Editor is open
             open_editor_types = [area.type for area in screen.areas]
             
