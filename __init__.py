@@ -25,7 +25,7 @@ from .operators import OBJECT_OT_message_box
 from .operators import OBJECT_OT_add_rotation_driver
 
 
-class HDRISunAlignerPropertyGroup(bpy.types.PropertyGroup):
+class HDRISAProperties(bpy.types.PropertyGroup):
     """All properties used by HDRI Sun Aligner."""
 
     long_deg: bpy.props.FloatProperty(name="Longitude", default=0.0, min=-180.0, max=180.0)
@@ -40,7 +40,7 @@ classes = (OBJECT_OT_calculate_sun_position,
            OBJECT_OT_add_new_sun,
            OBJECT_OT_add_rotation_driver,
            PANEL_PT_hdri_sun_aligner,
-           HDRISunAlignerPropertyGroup)
+           HDRISAProperties)
 
 
 def register():
@@ -49,7 +49,7 @@ def register():
         register_class(cls)
 
     # Add property group
-    bpy.types.Scene.hdri_sa_property_grp = bpy.props.PointerProperty(type=HDRISunAlignerPropertyGroup)
+    bpy.types.Scene.hdri_sa_props = bpy.props.PointerProperty(type=HDRISAProperties)
 
 def unregister():
     from bpy.utils import unregister_class
@@ -57,7 +57,7 @@ def unregister():
         unregister_class(cls)
 
     # Delete property group
-    del bpy.types.Scene.hdri_sa_property_grp
+    del bpy.types.Scene.hdri_sa_props
 
 if __name__ == "__main__":
     register()

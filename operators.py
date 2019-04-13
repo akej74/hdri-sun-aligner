@@ -26,8 +26,8 @@ class OBJECT_OT_rotate(bpy.types.Operator):
         scene = context.scene
         object = context.object
   
-        longitude = scene.hdri_sa_property_grp.long_deg * (pi/180) # Convert to radians
-        latitude = scene.hdri_sa_property_grp.lat_deg * (pi/180)
+        longitude = scene.hdri_sa_props.long_deg * (pi/180) # Convert to radians
+        latitude = scene.hdri_sa_props.lat_deg * (pi/180)
 
         # Calculate a vector pointing from the longitude and latitude to origo
         # See https://vvvv.org/blog/polar-spherical-and-geographic-coordinates 
@@ -43,7 +43,7 @@ class OBJECT_OT_rotate(bpy.types.Operator):
         euler = mathutils.Matrix.Rotation(angle, 4, axis).to_euler()
 
         # Store z-rotation value as property, used for driver calculation 
-        scene.hdri_sa_property_grp.z_org = euler.z
+        scene.hdri_sa_props.z_org = euler.z
         
         # Rotate selected object
         object.rotation_euler = euler
@@ -132,7 +132,7 @@ class OBJECT_OT_add_rotation_driver(bpy.types.Operator):
             obj_z.name = "obj_z"
             obj_z.targets[0].id_type = 'SCENE'
             obj_z.targets[0].id = scene
-            obj_z.targets[0].data_path = 'hdri_sa_property_grp.z_org'
+            obj_z.targets[0].data_path = 'hdri_sa_props.z_org'
 
             #z_rotation_driver.driver.expression = hdri_z.name + '-' + obj_z.name
             z_rotation_driver.driver.expression = obj_z.name + '-' + hdri_z.name
@@ -247,8 +247,8 @@ class OBJECT_OT_calculate_sun_position(bpy.types.Operator):
         long_deg, lat_deg = self.process_hdri(hdri_preview)
         
         # Update properties
-        scene.hdri_sa_property_grp.long_deg = long_deg
-        scene.hdri_sa_property_grp.lat_deg = lat_deg
+        scene.hdri_sa_props.long_deg = long_deg
+        scene.hdri_sa_props.lat_deg = lat_deg
  
         #context.window_manager.modal_handler_add(self)
         #return {'RUNNING_MODAL'}
@@ -264,8 +264,8 @@ class OBJECT_OT_calculate_sun_position(bpy.types.Operator):
         if event.type == 'LEFTMOUSE' and event.value == 'PRESS':
             
             # TODO: Use image direcly
-            img_size_x = context.scene.hdri_sa_property_grp.img_size_x
-            img_size_y = context.scene.hdri_sa_property_grp.img_size_y
+            img_size_x = context.scene.hdri_sa_props.img_size_x
+            img_size_y = context.scene.hdri_sa_props.img_size_y
 
             # Get image coordinate from mouse click in Image Editor
             reg_x = event.mouse_region_x 
