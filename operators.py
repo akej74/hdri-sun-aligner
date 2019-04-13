@@ -118,8 +118,11 @@ class HDRISA_OT_add_rotation_driver(bpy.types.Operator):
                 break
         
         if mapping_node:
-            # Driver for z rotation
-            z_rotation_driver = object.driver_add('rotation_euler',2)
+            # Path to HDRI mapping node z-rotation value
+            data_path = f'node_tree.nodes["{mapping_node}"].rotation[2]'
+            
+            # Driver for z rotation  
+            z_rotation_driver = object.driver_add('rotation_euler', 2)
 
             hdri_z = z_rotation_driver.driver.variables.new() # HDRI mapping node
             obj_z = z_rotation_driver.driver.variables.new() # Object original rotation 
@@ -127,14 +130,13 @@ class HDRISA_OT_add_rotation_driver(bpy.types.Operator):
             hdri_z.name = "hdri_z"
             hdri_z.targets[0].id_type = 'WORLD'
             hdri_z.targets[0].id = scene.world
-            hdri_z.targets[0].data_path = 'node_tree.nodes["Mapping"].rotation[2]' # TODO: Fix hardcoded node name...
+            hdri_z.targets[0].data_path = data_path
 
             obj_z.name = "obj_z"
             obj_z.targets[0].id_type = 'SCENE'
             obj_z.targets[0].id = scene
             obj_z.targets[0].data_path = 'hdri_sa_props.z_org'
 
-            #z_rotation_driver.driver.expression = hdri_z.name + '-' + obj_z.name
             z_rotation_driver.driver.expression = obj_z.name + '-' + hdri_z.name
 
         else:
