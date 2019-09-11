@@ -3,6 +3,10 @@ HDRI Sun Aligner is a Blender 2.8 addon for automatically rotating an object (e.
 - Adding a sun to a scene rendered by EEVEE, as EEVEE cannot render shadows from HDRI environment textures
 - Adding any light to enhance a scene, in alignment with direct light from the environment
 
+# Blender Artists forum
+A discussion thread about this addon can be found on the Blender Artists discussion forum:
+https://blenderartists.org/t/hdri-sun-aligner-v1-4/1142638
+
 # Usage
 - Add a HDRI environment texture (equirectangular projection) to the World in Blender
 - HDRI Sun Aligner is accessed from the panel to the right:
