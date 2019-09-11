@@ -7,22 +7,26 @@ from math import pi, cos, sin
 import mathutils
 
 class HDRISA_OT_preview(bpy.types.Operator):
-    """ Open a new window to display a preview of the sun position in the HDRI image"""
+    """Open a new window to display a preview of the sun position in the HDRI image"""
 
     bl_idname = "hdrisa.preview"     
     bl_label = "Preview"         
     bl_options = {'REGISTER'}
 
     def execute(self, context):
+        # Open a new Preferences window
         bpy.ops.screen.userpref_show("INVOKE_DEFAULT")
+        
+        # Change to an Image Editor
         area = bpy.context.window_manager.windows[-1].screen.areas[0]
         area.type = "IMAGE_EDITOR"
+        
+        # Open HDRI preview
         for img in bpy.data.images:
             name = img.name
             if name.startswith("hdri_sa_preview"):
                 area.spaces.active.image = img  
         
-
         return {'FINISHED'}
 
     @classmethod
