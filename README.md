@@ -11,7 +11,7 @@ https://blenderartists.org/t/hdri-sun-aligner-v1-4/1142638
 - Add a HDRI environment texture (equirectangular projection) to the World in Blender
 - HDRI Sun Aligner is accessed from the panel to the right:
 
-<a href="https://imgur.com/OmL1k2z"><img src="https://i.imgur.com/OmL1k2z.jpg" height="200" title="source: imgur.com" /></a>
+<a href="https://imgur.com/7L8l0nS"><img src="https://i.imgur.com/7L8l0nS.jpg" height="200" title="source: imgur.com" /></a>
 
 - Calculate the brightest point in the HDRI used for the environment by clicking on "Calculate sun position"
 - A preview of the calculated position can be displayed in a new window by clicking on "Preview":
