@@ -15,6 +15,8 @@ class HDRISA_PT_main_panel(bpy.types.Panel):
         
         row = layout.row()
         row.operator("hdrisa.dummy", text="Calculate sun position")
+        row = layout.row()
+        row.operator("hdrisa.preview", text="Preview")
         layout.separator()
         row = layout.row()
         row.label(text="Current sun position:")

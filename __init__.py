@@ -2,7 +2,7 @@ bl_info = {
     "name": "HDRI Sun Aligner",
     "author": "Ake Johansson",
     "description": "Rotates an object to match the brightest point in the HDRI texture used for the environment.",
-    "version": (1, 3),
+    "version": (1, 4),
     "blender": (2, 80, 0),
     "location": "View3D > Object > HDRI Sun Aligner",
     "warning": "",
@@ -23,7 +23,7 @@ from .operators import HDRISA_OT_dummy
 from .operators import HDRISA_OT_calculate_sun_position
 from .operators import HDRISA_OT_message_box
 from .operators import HDRISA_OT_add_rotation_driver
-
+from .operators import HDRISA_OT_preview
 
 class HDRISAProperties(bpy.types.PropertyGroup):
     """All properties used by HDRI Sun Aligner."""
@@ -33,7 +33,8 @@ class HDRISAProperties(bpy.types.PropertyGroup):
     z_org: bpy.props.FloatProperty(name="Z rot org", default=0.0)
 
 
-classes = (HDRISA_OT_calculate_sun_position,
+classes = (HDRISA_OT_preview,
+           HDRISA_OT_calculate_sun_position,
            HDRISA_OT_dummy,
            HDRISA_OT_rotate,
            HDRISA_OT_message_box,

@@ -6,6 +6,35 @@ import numpy as np
 from math import pi, cos, sin
 import mathutils
 
+class HDRISA_OT_preview(bpy.types.Operator):
+    """ Open a new window to display a preview of the sun position in the HDRI image"""
+
+    bl_idname = "hdrisa.preview"     
+    bl_label = "Preview"         
+    bl_options = {'REGISTER'}
+
+    def execute(self, context):
+        bpy.ops.screen.userpref_show("INVOKE_DEFAULT")
+        area = bpy.context.window_manager.windows[-1].screen.areas[0]
+        area.type = "IMAGE_EDITOR"
+        for img in bpy.data.images:
+            name = img.name
+            if name.startswith("hdri_sa_preview"):
+                area.spaces.active.image = img  
+        
+
+        return {'FINISHED'}
+
+    @classmethod
+    def poll(cls, context):        
+        # Only enable preview if preview image is available
+        for img in bpy.data.images:
+                name = img.name
+                if name.startswith("hdri_sa_preview"):
+                    return True
+
+        return False
+
 
 class HDRISA_OT_rotate(bpy.types.Operator):
     """Rotate active object in alignment with sun position"""     
@@ -152,7 +181,7 @@ class HDRISA_OT_add_rotation_driver(bpy.types.Operator):
 class HDRISA_OT_dummy(bpy.types.Operator):
     """Calculate the brightest spot in the HDRI used for the environment"""
     
-    #Dummy operator used for main operation with overide   
+    #Dummy operator used for main operation with override   
 
     bl_idname = "hdrisa.dummy"     
     bl_label = "Dummy"         
@@ -239,18 +268,18 @@ class HDRISA_OT_calculate_sun_position(bpy.types.Operator):
                 hdri_preview.scale(new_width, new_height)
            
             # Check if an Image Editor is open
-            open_editor_types = [area.type for area in screen.areas]
+            # open_editor_types = [area.type for area in screen.areas]
             
-            if "IMAGE_EDITOR" not in open_editor_types:
-                msg = "Please open an Image Editor window."
-                bpy.ops.message.messagebox('INVOKE_DEFAULT', message=msg)
-                self.report({'WARNING'}, msg)
-                return {'CANCELLED'}
+            # if "IMAGE_EDITOR" not in open_editor_types:
+            #     msg = "Please open an Image Editor window."
+            #     bpy.ops.message.messagebox('INVOKE_DEFAULT', message=msg)
+            #     self.report({'WARNING'}, msg)
+            #     return {'CANCELLED'}
 
             # Open hdri_preview image in the Image Editor
-            for area in screen.areas:
-                if area.type == 'IMAGE_EDITOR':
-                    area.spaces.active.image = hdri_preview 
+            # for area in screen.areas:
+            #    if area.type == 'IMAGE_EDITOR':
+            #        area.spaces.active.image = hdri_preview 
         else:
             msg = "Please add an Environment Texture for the world."
             bpy.ops.message.messagebox('INVOKE_DEFAULT', message=msg)
