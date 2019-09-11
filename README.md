@@ -5,13 +5,12 @@ HDRI Sun Aligner is a Blender 2.8 addon for automatically rotating an object (e.
 
 # Usage
 - Add a HDRI environment texture (equirectangular projection) to the World in Blender
-- Open both the 3D Viewport and an Image Editor
 - HDRI Sun Aligner is accessed from the panel to the right:
 
 <a href="https://imgur.com/OmL1k2z"><img src="https://i.imgur.com/OmL1k2z.jpg" height="200" title="source: imgur.com" /></a>
 
 - Calculate the brightest point in the HDRI used for the environment by clicking on "Calculate sun position"
-- A preview of the calculated position is displayed in the image editor:
+- A preview of the calculated position can be displayed in a new window by clicking on "Preview":
 
 <a href="https://imgur.com/nymkd3D"><img src="https://i.imgur.com/nymkd3D.jpg" height="200" title="source: imgur.com" /></a>
 
