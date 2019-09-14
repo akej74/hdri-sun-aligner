@@ -151,9 +151,16 @@ class HDRISA_OT_add_rotation_driver(bpy.types.Operator):
                 break
         
         if mapping_node:
-            # Path to HDRI mapping node z-rotation value
-            data_path = f'node_tree.nodes["{mapping_node}"].rotation[2]'
+            # Check for mapping node attributes in Blender 2.80
+            if hasattr(world_nodes[mapping_node], 'rotation'):
+                # Path to HDRI mapping node z-rotation value
+                data_path = f'node_tree.nodes["{mapping_node}"].rotation[2]'            
             
+            # If not, assume Blender 2.81 mapping node attributes
+            else:
+                # Path to HDRI mapping node z-rotation value
+                data_path = f'node_tree.nodes["{mapping_node}"].inputs[2].default_value[2]'       
+                                  
             # Driver for z rotation  
             z_rotation_driver = object.driver_add('rotation_euler', 2)
 
