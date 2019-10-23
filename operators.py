@@ -159,7 +159,7 @@ class HDRISA_OT_add_rotation_driver(bpy.types.Operator):
             # If not, assume Blender 2.81 mapping node attributes
             else:
                 # Path to HDRI mapping node z-rotation value
-                data_path = f'node_tree.nodes["{mapping_node}"].inputs[2].default_value[2]'       
+                data_path = f'node_tree.nodes["{mapping_node}"].inputs["Rotation"].default_value[2]'       
                                   
             # Driver for z rotation  
             z_rotation_driver = object.driver_add('rotation_euler', 2)
@@ -192,7 +192,7 @@ class HDRISA_OT_add_rotation_driver(bpy.types.Operator):
 class HDRISA_OT_dummy(bpy.types.Operator):
     """Calculate the brightest spot in the HDRI used for the environment"""
     
-    #Dummy operator used for main operation with override   
+    # Dummy operator used for main operation with override   
 
     bl_idname = "hdrisa.dummy"     
     bl_label = "Dummy"         
@@ -213,7 +213,7 @@ class HDRISA_OT_dummy(bpy.types.Operator):
 
 
 class HDRISA_OT_message_box(bpy.types.Operator):
-    """Show a message box."""
+    """Show a message box"""
 
     bl_idname = "message.messagebox"
     bl_label = ""
