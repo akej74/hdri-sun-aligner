@@ -303,6 +303,7 @@ class HDRISA_OT_calculate_sun_position(bpy.types.Operator):
         # Update properties
         scene.hdri_sa_props.long_deg = long_deg
         scene.hdri_sa_props.lat_deg = lat_deg
+        scene.hdri_sa_props.sun_position_calculated = True
  
         #context.window_manager.modal_handler_add(self)
         #return {'RUNNING_MODAL'}

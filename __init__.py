@@ -31,7 +31,7 @@ class HDRISAProperties(bpy.types.PropertyGroup):
     long_deg: bpy.props.FloatProperty(name="Longitude", default=0.0, min=-180.0, max=180.0)
     lat_deg: bpy.props.FloatProperty(name="Latitude", default=0.0, min=-90.0, max=90.0)
     z_org: bpy.props.FloatProperty(name="Z rot org", default=0.0)
-
+    sun_position_calculated: bpy.props.BoolProperty(name="Sun Position Calculated", default=False) 
 
 classes = (HDRISA_OT_preview,
            HDRISA_OT_calculate_sun_position,
