@@ -14,7 +14,7 @@ class HDRISA_PT_main_panel(bpy.types.Panel):
         scene = context.scene
         
         row = layout.row()
-        row.operator("hdrisa.dummy", text="Calculate sun position")
+        row.operator("hdrisa.calculate_sun_position", text="Calculate sun position")
         row = layout.row()
         row.operator("hdrisa.preview", text="Preview")
         

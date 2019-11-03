@@ -189,29 +189,6 @@ class HDRISA_OT_add_rotation_driver(bpy.types.Operator):
         return {'FINISHED'}
 
 
-class HDRISA_OT_dummy(bpy.types.Operator):
-    """Calculate the brightest spot in the HDRI used for the environment"""
-    
-    # Dummy operator used for main operation with override   
-
-    bl_idname = "hdrisa.dummy"     
-    bl_label = "Dummy"         
-    bl_options = {'REGISTER'}
-
-    def execute(self, context):
-        screen = context.screen
-        override = bpy.context.copy()
-
-        for area in screen.areas:
-            if area.type == 'IMAGE_EDITOR':
-                for region in area.regions:
-                    if region.type == 'WINDOW':
-                        override = {'region': region, 'area': area}
-        
-        bpy.ops.hdrisa.calculate_sun_position(override, 'INVOKE_DEFAULT')
-        return {'FINISHED'}
-
-
 class HDRISA_OT_message_box(bpy.types.Operator):
     """Show a message box"""
 
@@ -277,20 +254,6 @@ class HDRISA_OT_calculate_sun_position(bpy.types.Operator):
                 new_width = 1024
                 new_height = int(org_height * (new_width / org_width))
                 hdri_preview.scale(new_width, new_height)
-           
-            # Check if an Image Editor is open
-            # open_editor_types = [area.type for area in screen.areas]
-            
-            # if "IMAGE_EDITOR" not in open_editor_types:
-            #     msg = "Please open an Image Editor window."
-            #     bpy.ops.message.messagebox('INVOKE_DEFAULT', message=msg)
-            #     self.report({'WARNING'}, msg)
-            #     return {'CANCELLED'}
-
-            # Open hdri_preview image in the Image Editor
-            # for area in screen.areas:
-            #    if area.type == 'IMAGE_EDITOR':
-            #        area.spaces.active.image = hdri_preview 
         else:
             msg = "Please add an Environment Texture for the world."
             bpy.ops.message.messagebox('INVOKE_DEFAULT', message=msg)
@@ -305,52 +268,7 @@ class HDRISA_OT_calculate_sun_position(bpy.types.Operator):
         scene.hdri_sa_props.lat_deg = lat_deg
         scene.hdri_sa_props.sun_position_calculated = True
  
-        #context.window_manager.modal_handler_add(self)
-        #return {'RUNNING_MODAL'}
         return {'FINISHED'}
-
-    
-    def modal(self, context, event):
-        """ Get image coordinates from mouse click.
-        
-        *** Currently not in use ***
-        """
-
-        if event.type == 'LEFTMOUSE' and event.value == 'PRESS':
-            
-            # TODO: Use image direcly
-            img_size_x = context.scene.hdri_sa_props.img_size_x
-            img_size_y = context.scene.hdri_sa_props.img_size_y
-
-            # Get image coordinate from mouse click in Image Editor
-            reg_x = event.mouse_region_x 
-            reg_y = event.mouse_region_y
-
-            # Calculate image coordinates
-            uv_x, uv_y = context.region.view2d.region_to_view(reg_x, reg_y)
-            img_coordinate_x = int(uv_x * img_size_x) 
-            img_coordinate_y = int(uv_y * img_size_y)
-
-            # Limit coordinates from zero to max size of image            
-            if img_coordinate_x > img_size_x:
-                img_coordinate_x = img_size_x 
-            
-            if img_coordinate_y > img_size_y:
-                img_coordinate_y = img_size_y
-            
-            if img_coordinate_x < 0:
-                img_coordinate_x = 0
-            
-            if img_coordinate_y < 0:
-                img_coordinate_y = 0
-            
-            print(img_coordinate_x, img_coordinate_y)
-            
-        elif event.type in {'RIGHTMOUSE', 'ESC'}:
-            print("Cancel...")
-            return {'CANCELLED'}
-
-        return {'RUNNING_MODAL'}
 
     def process_hdri(self, image):
         """
