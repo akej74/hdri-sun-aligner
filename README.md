@@ -3,6 +3,7 @@ HDRI Sun Aligner is a Blender 2.8+ and 2.9+ addon for automatically rotating an 
 - Adding a sun to a scene rendered by EEVEE, as EEVEE cannot render shadows from HDRI environment textures
 - Adding any light to enhance a scene, in alignment with direct light from the environment
 - Improve a panorama created with Google Streetview app for use as an environment texture in Blender, see the following excellent video by Blender Daily: [Easy HDRI Creation with just a Phone!](https://www.youtube.com/watch?v=Aco0UDxL6rA)
+- For a nice overview of the addon, see the following video by The CG Essentials: [Fixing Eevee HDRI Lighting](https://www.youtube.com/watch?v=J6ZufnYu0sI)
 
 # Blender Artists forum
 A discussion thread about this addon can be found on the Blender Artists discussion forum:
