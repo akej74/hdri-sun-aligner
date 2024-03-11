@@ -1,5 +1,5 @@
 # HDRI Sun Aligner
-HDRI Sun Aligner is a Blender 2.8+ and 2.9+ addon for automatically rotating an object (e.g. a sun) to match the brightest point in a HDRI environment texture. Some ideas when this may be useful:
+HDRI Sun Aligner is a Blender 2.8+ to 4.0+ addon for automatically rotating an object (e.g. a sun) to match the brightest point in a HDRI environment texture. Some ideas when this may be useful:
 - Adding a sun to a scene rendered by EEVEE, as EEVEE cannot render shadows from HDRI environment textures
 - Adding any light to enhance a scene, in alignment with direct light from the environment
 - Improve a panorama created with Google Streetview app for use as an environment texture in Blender, see the following excellent video by Blender Daily: [Easy HDRI Creation with just a Phone!](https://www.youtube.com/watch?v=Aco0UDxL6rA)
